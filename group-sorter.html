@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>group sorter</title>
+  </head>
+
+  <body>
+    <label>
+      <div>Enter text:</div>
+      <textarea id="input" rows="10"></textarea>
+    </label>
+
+    <button id="copy-to-clipboard">Copy to Clipboard</button>
+    <p id="copied-message" hidden>Copied!</p>
+
+    <p id="output"></p>
+  </body>
+
+  <script type="module">
+    const textarea = document.querySelector("textarea")
+    const output = document.querySelector("#output")
+    const copyButton = document.querySelector("#copy-to-clipboard")
+    const copiedMessage = document.querySelector("#copied-message")
+
+    textarea.oninput = () => {
+      output.textContent = textarea.value
+        .trim()
+        .split(/(?:\r?\n){2,}/)
+        .filter(Boolean)
+        .sort()
+        .join("\n\n")
+    }
+
+    let timeout
+
+    copyButton.onclick = () => {
+      navigator.clipboard.writeText(output.textContent)
+
+      if (timeout) clearTimeout(timeout)
+
+      copiedMessage.hidden = false
+      timeout = setTimeout(() => {
+        copiedMessage.hidden = true
+      }, 1000)
+    }
+  </script>
+
+  <style>
+    textarea {
+      display: block;
+      width: 100%;
+    }
+
+    #output {
+      white-space: pre-line;
+    }
+  </style>
+</html>
