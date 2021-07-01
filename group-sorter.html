@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-900 text-gray-50">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+      rel="stylesheet"
+    />
+    
+
+    <title>paragraph sorter</title>
+  <script type="module" crossorigin src="/assets/group-sorter.22be20d9.js"></script>
+  <link rel="stylesheet" href="/assets/group-sorter.0a52f050.css">
+</head>
+
+  <body class="space-y-4 p-4 max-w-screen-md mx-auto">
+    <p>
+      Enter a block of text to sort all the paragraphs alphabetically.
+      Paragraphs are separated by new lines
+    </p>
+
+    <textarea
+      aria-label="Input"
+      id="input"
+      rows="10"
+      autofocus
+      class="
+        block
+        shadow-inner
+        rounded-md
+        w-full
+        bg-gray-800
+        border-0
+        px-3
+        py-2
+        focus:outline-none focus:ring-2
+      "
+    ></textarea>
+
+    <button
+      id="copy-to-clipboard"
+      class="
+        bg-blue-600
+        text-white
+        px-3
+        py-2
+        rounded-md
+        transition-colors
+        hover:bg-blue-700
+        focus:outline-none focus:ring-2
+      "
+    >
+      Copy to Clipboard
+    </button>
+    <p id="copied-message" hidden>Copied!</p>
+
+    <p
+      id="output"
+      class="
+        whitespace-pre-line
+        block
+        shadow-inner
+        rounded-md
+        w-full
+        bg-gray-800
+        border-0
+        px-3
+        py-2
+        before:italic before:opacity-50
+        empty:before:content-[attr(data-empty)]
+      "
+      data-empty="Nothing yet!"
+    ></p>
+  </body>
+
+  
+</html>
